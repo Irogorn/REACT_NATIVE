@@ -1,9 +1,10 @@
 //import liraries
-import React, { Component, useState } from "react";
+import React, { Component, useContext, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Button from "../../ui/Bouton/Button";
 import Input from "../../ui/Input/Input";
 import Error from "../../ui/Error/Error";
+import { UserContext } from "../../contexts/UserContext";
 
 // create a component
 const SignUpForm = () => {
@@ -15,6 +16,8 @@ const SignUpForm = () => {
     const [userError, setUserError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [confPassWordError, setConfPassWordError] = useState("");
+
+    const userContext = useContext(UserContext);
 
     function handleEmail(event) {
         setEmailInput(event);
@@ -44,7 +47,10 @@ const SignUpForm = () => {
             confPasswordInput === passwordInput &&
             (userInput.length >= 3 || userInput.length <= 20)
         ) {
-            alert("Inscris avec succès !");
+            userContext.setUser({
+                email: emailInput,
+                username: userInput,
+            });
         } else {
             if (!emailInput.includes("@")) {
                 setEmailError("Forme de l'email incorrecte");
