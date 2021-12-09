@@ -5,6 +5,7 @@ import * as MediaLibrary from "expo-media-library";
 import { Entypo } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { UserContext } from "../../contexts/UserContext";
+import Button from "../../ui/Bouton/Button";
 
 // create a component
 const Profil = ({ navigation }) => {
@@ -30,6 +31,10 @@ const Profil = ({ navigation }) => {
         navigation.push("camera");
     };
 
+    function editInfos() {
+        navigation.push("edit");
+    }
+
     return (
         <View style={styles.container}>
             <View>
@@ -49,6 +54,24 @@ const Profil = ({ navigation }) => {
                         <Entypo name="camera" size={24} color="darkviolet" />
                     </TouchableOpacity>
                 </View>
+            </View>
+            <View style={styles.informations}>
+                <View style={styles.info}>
+                    <Text>{"Votre e-mail: " + userContext.user.email}</Text>
+                </View>
+                <View style={styles.info}>
+                    <Text>
+                        {"Votre username: " + userContext.user.username}
+                    </Text>
+                </View>
+                <View style={styles.info}>
+                    <Text>
+                        {userContext.user.description
+                            ? "A propos de vous" + userContext.user.description
+                            : "A propos de vous: Ajoutez une description..."}
+                    </Text>
+                </View>
+                <Button label="Modifer vos informations" handle={editInfos} />
             </View>
         </View>
     );
@@ -73,6 +96,18 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         width: 150,
         alignSelf: "center",
+    },
+    informations: {
+        width: 250,
+        alignSelf: "center",
+        margin: 25,
+        padding: 25,
+        borderWidth: 1,
+        borderColor: "black",
+        borderRadius: 10,
+    },
+    info: {
+        paddingVertical: 10,
     },
 });
 

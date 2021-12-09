@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { UserContext } from "./components/contexts/UserContext";
 import Auth from "./components/Pages/Auth/Auth";
-import ProfilStack from "./components/Stacks/ProfilStack";
+import Drawer from "./components/Drawers/Drawers";
 
 export default function App() {
     const fakeUser = { email: "toto@toto", username: "toto" };
@@ -14,7 +14,7 @@ export default function App() {
             <NavigationContainer>
                 <View style={styles.container}>
                     <StatusBar style="auto" />
-                    {user ? <ProfilStack /> : <Auth />}
+                    {user ? <Drawer /> : <Auth />}
                 </View>
             </NavigationContainer>
         </UserContext.Provider>

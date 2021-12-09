@@ -10,13 +10,24 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Camera } from "expo-camera";
 import { MaterialIcons } from "@expo/vector-icons";
 import { UserContext } from "../../contexts/UserContext";
+import * as MediaLibrary from "expo-media-library";
 
 // create a component
 const Cam = ({ navigation }) => {
     const [cameraPermission, setCameraPermission] = useState();
     const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+    const [mediaPermission, setMediaPermission] = useState();
     const cameraRef = useRef();
     const userContext = useContext(UserContext);
+
+    useEffect(() => {
+        (async () => {
+            const status = await Camera.requestCameraPermissionsAsync();
+            setCameraPermission(status.granted);
+            const permission = await MediaLibrary.requestPermissionsAsync();
+            setMediaPermission(permission.granted);
+        })();
+    }, []);
 
     function toggleCam() {
         if (cameraType === Camera.Constants.Type.back) {
@@ -32,15 +43,14 @@ const Cam = ({ navigation }) => {
             ...userContext.user,
             avatar: img.uri,
         });
-        console.log(img);
+
+        if (mediaPermission) {
+            const savedImage = await MediaLibrary.createAssetAsync(img.uri);
+            //await MediaLibrary.saveToLibraryAsync(img.uri);
+        }
+
         navigation.goBack();
     };
-    useEffect(() => {
-        (async () => {
-            const permission = await Camera.requestCameraPermissionsAsync();
-            setCameraPermission(permission.granted);
-        })();
-    }, []);
 
     if (!cameraPermission) {
         return <Text>Accès refusé</Text>;
