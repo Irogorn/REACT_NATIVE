@@ -11,3 +11,9 @@
     Ajout du Drawer.
     Ajout de MapView
     Ajout de Location
+
+#session du 09/12/2021
+    Utilisation d'API restful
+    Ajout webbrowser
+    Ajout de ScrollView
+    Ajout de l'indicateur.

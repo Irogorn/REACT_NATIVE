@@ -2,7 +2,9 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import ProfilStack from "../Stacks/ProfilStack";
 import React from "react";
 import NavBar from "../NavBar/NavBar";
-import Map from "../Map/Map";
+import Map from "../Pages/Map/Map";
+import GOT from "../Pages/GOT/GOT";
+import Jokes from "../Pages/Jokes/Jokes";
 
 const Drawer = createDrawerNavigator();
 
@@ -24,6 +26,16 @@ export default function DrawerNav() {
                 name="map"
                 component={Map}
                 options={{ title: "Map" }}
+            />
+            <Drawer.Screen
+                name="got"
+                component={GOT}
+                options={{ title: "Personnage de Game of thrones" }}
+            />
+            <Drawer.Screen
+                name="jokes"
+                component={Jokes}
+                options={{ title: "Blague naze" }}
             />
         </Drawer.Navigator>
     );

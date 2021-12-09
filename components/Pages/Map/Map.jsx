@@ -25,12 +25,18 @@ const Map = () => {
 
     return (
         <View style={styles.container}>
-            <MapView style={styles.map}>
+            <MapView
+                style={styles.map}
+                showsCompass={true}
+                showsMyLocationButton={true}
+                showsUserLocation={true}
+                mapType="hybrid"
+            >
                 {location !== undefined && (
                     <Marker
                         coordinate={{
-                            latitude: location.coords.latitude,
                             longitude: location.coords.longitude,
+                            latitude: location.coords.latitude,
                         }}
                     ></Marker>
                 )}
