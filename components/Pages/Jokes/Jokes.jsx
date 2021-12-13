@@ -34,7 +34,7 @@ const Jokes = () => {
                 setIsLoading(false);
             });
         return () => {
-            setShow(falses);
+            setShow(false);
         };
     }, [next]);
     return (

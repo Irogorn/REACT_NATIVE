@@ -8,7 +8,7 @@ import Drawer from "./components/Drawers/Drawers";
 
 export default function App() {
     const fakeUser = { email: "toto@toto", username: "toto" };
-    const [user, setUser] = useState(fakeUser);
+    const [user, setUser] = useState(null);
     return (
         <UserContext.Provider value={{ user, setUser }}>
             <NavigationContainer>

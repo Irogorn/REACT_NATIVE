@@ -17,3 +17,8 @@
     Ajout webbrowser
     Ajout de ScrollView
     Ajout de l'indicateur.
+
+#sesion du 10/12/2021
+    Utilisation d'API restful
+    Use of Picker fromm 'REACT Native Picker' as ComboBox
+    Add formik and yup

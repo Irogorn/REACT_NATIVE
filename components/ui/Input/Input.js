@@ -4,7 +4,7 @@ import { View, StyleSheet, TextInput } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 // create a component
-const Input = ({ placeholder, handle, value, isPassWord }) => {
+const Input = ({ placeholder, handle, value, isPassWord, onBlur }) => {
     const [showPassWord, setShowPassWord] = useState(true);
 
     function toggleShowPassWord() {
@@ -19,6 +19,7 @@ const Input = ({ placeholder, handle, value, isPassWord }) => {
                 onChangeText={handle}
                 value={value}
                 secureTextEntry={showPassWord}
+                onBlur={onBlur}
             />
             {isPassWord && (
                 <Feather

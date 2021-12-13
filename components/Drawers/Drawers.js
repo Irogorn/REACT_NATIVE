@@ -5,6 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import Map from "../Pages/Map/Map";
 import GOT from "../Pages/GOT/GOT";
 import Jokes from "../Pages/Jokes/Jokes";
+import News from "../Pages/News/News";
 
 const Drawer = createDrawerNavigator();
 
@@ -36,6 +37,11 @@ export default function DrawerNav() {
                 name="jokes"
                 component={Jokes}
                 options={{ title: "Blague naze" }}
+            />
+            <Drawer.Screen
+                name="news"
+                component={News}
+                options={{ title: "Les nouvelles" }}
             />
         </Drawer.Navigator>
     );

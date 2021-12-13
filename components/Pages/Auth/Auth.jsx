@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import LoginForm from "../../Containers/Login/loginForm";
+import LoginFormik from "../../Containers/Login/loginFormik";
 import SignUpForm from "../../Containers/Signup/signupForm";
 
 // create a component
@@ -14,7 +14,7 @@ const Auth = () => {
 
     return (
         <View style={styles.container}>
-            {isLogin ? <LoginForm /> : <SignUpForm />}
+            {isLogin ? <LoginFormik /> : <SignUpForm />}
             <TouchableOpacity onPress={toggleLogin}>
                 <Text>
                     {isLogin
